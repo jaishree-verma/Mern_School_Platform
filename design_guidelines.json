@@ -1,0 +1,88 @@
+{
+  "theme": "light",
+  "archetype": "Vibrant Play (Archetype 6)",
+  "colors": {
+    "primary": "#38BDF8",
+    "secondary": "#FACC15",
+    "accent1": "#FB7185",
+    "accent2": "#34D399",
+    "background": "#FAFAF9",
+    "surface": "#FFFFFF",
+    "text_heading": "#1E293B",
+    "text_body": "#475569",
+    "border": "#E2E8F0"
+  },
+  "typography": {
+    "heading_font": "Fredoka",
+    "body_font": "Nunito",
+    "heading_scale": "text-4xl md:text-5xl lg:text-7xl tracking-tighter font-bold",
+    "body_scale": "text-base md:text-lg leading-relaxed font-medium"
+  },
+  "layout": {
+    "spacing_system": "Generous (p-8 to p-16). Containers must have padding to prevent text collision.",
+    "grid_strategy": "Bento Grid for Gallery. Asymmetrical layouts for main sections to evoke playfulness.",
+    "surface_treatment": "White cards with solid colorful offset shadows (e.g., shadow-[8px_8px_0px_#38BDF8]), rounded-2xl or rounded-3xl borders."
+  },
+  "components": {
+    "buttons": "Pill-shaped (rounded-full), bold text, vibrant background (yellow or blue), hover:-translate-y-1, active:translate-y-0 transition-transform. Include data-testid attribute.",
+    "navigation": "Floating glass header (backdrop-blur-xl bg-white/80), sticky top-4 mx-4 md:mx-8 rounded-full shadow-[0_4px_32px_rgba(0,0,0,0.1)] z-50 px-6 py-4.",
+    "inputs": "Shadcn highly customized: rounded-xl, border-2 border-slate-200 focus:border-sky-400 focus:ring-4 focus:ring-sky-100."
+  },
+  "special_instructions": {
+    "hero_3d_video": "Implement a 3D Dashboard Hero section. Use react-three-fiber (@react-three/fiber, @react-three/drei) to create a playful, interactive 3D scene (e.g., floating shapes, a path, or basic elements representing kids walking). Alternatively, integrate an HTML5 <video> background showing a 3D animated scene of children. The hero must feature a strong H1 overlay and clear CTA.",
+    "gallery_section": "Create a Bento-box style CSS grid for the gallery. Group or tag photos by 'Classroom', 'Events', and 'Achievements'. Images must be beautifully masked with object-cover and rounded-2xl.",
+    "about_section": "Showcase the journey from class PG to Class 5. Use a stepped, timeline, or staggered card layout. Use Phosphor Icons or Lucide-react for playful visual cues.",
+    "contact_section": "Do NOT build a functional form. Display contact information (phone, email, address) using large, friendly typography and playful iconography inside colorful bordered cards.",
+    "location_section": "Embed an interactive Google Maps iframe. Wrap it in a container with a bold, colorful 8px solid border and 24px border-radius.",
+    "testing": "All interactive and key informational elements MUST include a data-testid attribute (e.g., data-testid='nav-gallery-link')."
+  },
+  "media": {
+    "gallery_classroom": [
+      {
+        "url": "https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Children focused on educational activities"
+      },
+      {
+        "url": "https://images.pexels.com/photos/8363130/pexels-photo-8363130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Diverse children in classroom raising hands"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1603140841888-ef505a7f7045?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHw0fHxlbGVtZW50YXJ5JTIwc2Nob29sJTIwY2xhc3Nyb29tJTIwa2lkc3xlbnwwfHx8fDE3NzQ5MzUxNzB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Elementary classroom setting"
+      }
+    ],
+    "gallery_events": [
+      {
+        "url": "https://images.unsplash.com/photo-1759675934052-1d82517c76c8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwzfHxjaGlsZHJlbiUyMHNjaG9vbCUyMGV2ZW50JTIwb3V0ZG9vcnxlbnwwfHx8fDE3NzQ5MzUxNzF8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Students outdoors holding heart shapes"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1774266854775-4831c6c516b3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMHNjaG9vbCUyMGV2ZW50JTIwb3V0ZG9vcnxlbnwwfHx8fDE3NzQ5MzUxNzF8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Children in uniforms clapping"
+      }
+    ],
+    "gallery_achievements": [
+      {
+        "url": "https://images.pexels.com/photos/9411422/pexels-photo-9411422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Group of young athletes raising a wooden trophy"
+      },
+      {
+        "url": "https://images.pexels.com/photos/6125928/pexels-photo-6125928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Children lifting a golden trophy indoors"
+      }
+    ],
+    "hero_fallback": [
+      {
+        "url": "https://images.unsplash.com/photo-1760153560407-61cb201349b3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwyfHwzZCUyMHNjaG9vbCUyMGJ1aWxkaW5nJTIwY2FydG9vbnxlbnwwfHx8fDE3NzQ5MzUxODd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "3D stylized school building"
+      }
+    ]
+  },
+  "dependencies_to_install": [
+    "lucide-react",
+    "framer-motion",
+    "@react-three/fiber",
+    "@react-three/drei",
+    "three"
+  ]
+}

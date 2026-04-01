@@ -42,8 +42,9 @@ function HomePage() {
       { url: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?w=800', title: 'Entertainment', description: 'Fun and engaging activities' },
     ],
     schoolAlbum: [
-      { url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800', title: 'School Photo', description: 'Our beautiful campus' },
-      { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', title: 'Memories', description: 'Treasured moments' },
+      { url: 'https://drive.google.com/uc?export=view&id=14eH48FzKgI-U6LNSbD9s44z10inT_QW0', title: 'School Photo', description: 'Our beautiful campus' },
+      { url: 'https://drive.google.com/uc?export=view&id=1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i', title: 'School Photo', description: 'Learning environment' },
+      { url: 'https://drive.google.com/uc?export=view&id=1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT', title: 'Memories', description: 'Treasured moments' },
     ],
   };
 

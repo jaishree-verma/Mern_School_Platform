@@ -58,7 +58,13 @@ function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9]">
+    <div className="min-h-screen relative">
+      <div className="app-background">
+        <div className="floating-shape" style={{ width: '300px', height: '300px', background: '#38BDF8', top: '10%', left: '5%', animationDelay: '0s' }}></div>
+        <div className="floating-shape" style={{ width: '400px', height: '400px', background: '#FACC15', top: '60%', right: '10%', animationDelay: '5s' }}></div>
+        <div className="floating-shape" style={{ width: '250px', height: '250px', background: '#FB7185', bottom: '20%', left: '15%', animationDelay: '10s' }}></div>
+        <div className="floating-shape" style={{ width: '350px', height: '350px', background: '#34D399', top: '30%', right: '20%', animationDelay: '7s' }}></div>
+      </div>
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl" data-testid="main-navigation">
         <div className="backdrop-blur-xl bg-white/80 rounded-full shadow-[0_4px_32px_rgba(0,0,0,0.1)] px-6 py-4">
           <div className="flex items-center justify-between">
@@ -247,7 +253,7 @@ function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base md:text-lg font-medium text-[#475569] mb-8 max-w-2xl mx-auto leading-relaxed"
+              className="text-base md:text-lg font-bold text-[#475569] mb-8 max-w-2xl mx-auto leading-relaxed"
               style={{ fontFamily: 'Nunito' }}
               data-testid="hero-subtitle"
             >
@@ -291,7 +297,7 @@ function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-8 hover:-translate-y-2 transition-transform"
+                className="bg-white rounded-2xl p-8 card-3d cursor-pointer"
                 style={{ boxShadow: `8px 8px 0px ${classInfo.color}` }}
                 data-testid={`class-card-${index}`}
               >
@@ -399,7 +405,7 @@ function HomePage() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#38BDF8]"
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#38BDF8] card-3d"
                     data-testid={`gallery-image-achievements-${index}`}
                   >
                     <img
@@ -431,7 +437,7 @@ function HomePage() {
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-80 shadow-[8px_8px_0px_#FACC15]"
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-80 shadow-[8px_8px_0px_#FACC15] card-3d"
                     data-testid={`gallery-image-events-${index}`}
                   >
                     <img
@@ -463,7 +469,7 @@ function HomePage() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative rounded-2xl overflow-hidden group cursor-pointer h-72 border-4 border-white shadow-xl hover:shadow-2xl transition-all"
+                    className="relative rounded-2xl overflow-hidden group cursor-pointer h-72 border-4 border-white shadow-xl card-3d"
                     data-testid={`gallery-image-celebrations-${index}`}
                   >
                     <img
@@ -500,7 +506,7 @@ function HomePage() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#34D399]"
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#34D399] card-3d"
                     data-testid={`gallery-image-classroom-${index}`}
                   >
                     <img
@@ -532,7 +538,7 @@ function HomePage() {
                     initial={{ opacity: 0, rotate: index % 2 === 0 ? -5 : 5 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#A78BFA]"
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#A78BFA] card-3d"
                     data-testid={`gallery-image-school-album-${index}`}
                   >
                     <img
@@ -575,7 +581,7 @@ function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 border-4 border-[#38BDF8] text-center hover:-translate-y-2 transition-transform"
+              className="bg-white rounded-2xl p-8 border-4 border-[#38BDF8] text-center card-3d"
               data-testid="contact-phone-card"
             >
               <div className="w-16 h-16 bg-[#38BDF8] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -594,7 +600,7 @@ function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 border-4 border-[#FACC15] text-center hover:-translate-y-2 transition-transform"
+              className="bg-white rounded-2xl p-8 border-4 border-[#FACC15] text-center card-3d"
               data-testid="contact-email-card"
             >
               <div className="w-16 h-16 bg-[#FACC15] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -613,7 +619,7 @@ function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 border-4 border-[#FB7185] text-center hover:-translate-y-2 transition-transform"
+              className="bg-white rounded-2xl p-8 border-4 border-[#FB7185] text-center card-3d"
               data-testid="contact-address-card"
             >
               <div className="w-16 h-16 bg-[#FB7185] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -651,14 +657,14 @@ function HomePage() {
             data-testid="location-map"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.7239844444444!2d80.32959999999999!3d26.4499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c47f0bb28c0ff%3A0x93b5bc5ab7ca8f62!2sVikas%20Nagar%2C%20Kanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1703001234567!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.7!2d80.3296!3d26.4499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c47f0bb28c0ff%3A0x93b5bc5ab7ca8f62!2s199%20Awadhpuri%20Rd%2C%20Lakhanpur%2C%20Vikas%20Nagar%2C%20Kanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1703001234567!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="School Location Map"
+              title="Springers School Location - 199 Awadhpuri Road, Vikas Nagar, Kanpur"
             ></iframe>
           </motion.div>
         </div>

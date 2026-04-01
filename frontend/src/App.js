@@ -45,11 +45,28 @@ function HomePage() {
       { url: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?w=800', title: 'Entertainment', description: 'Fun and engaging activities' },
     ],
     schoolAlbum: [
-      { url: 'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0', title: 'School Photo 1', description: 'Our beautiful campus' },
-      { url: 'https://lh3.googleusercontent.com/d/1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i', title: 'School Photo 2', description: 'Learning environment' },
-      { url: 'https://lh3.googleusercontent.com/d/1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT', title: 'School Photo 3', description: 'Campus view' },
-      { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', title: 'Memories', description: 'Treasured moments' },
+      { 
+        url: 'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0', 
+        title: 'School Photo', 
+        description: 'Our beautiful campus',
+        images: [
+          { url: 'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0', title: 'Front View' },
+          { url: 'https://lh3.googleusercontent.com/d/1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i', title: 'Building' },
+          { url: 'https://lh3.googleusercontent.com/d/1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT', title: 'Campus' }
+        ]
+      },
+      { 
+        url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', 
+        title: 'Memories', 
+        description: 'Treasured moments',
+        images: []
+      },
     ],
+  };
+
+  const openGalleryGrid = (images) => {
+    setGalleryImages(images);
+    setIsGalleryOpen(true);
   };
 
   const openGalleryViewer = (images, startIndex = 0) => {
@@ -725,31 +742,37 @@ function HomePage() {
               </div>
             )}
 
-            {/* School Album Layout - Grid Gallery */}
+            {/* School Album Layout - Main Cards with Grid Popup */}
             {activeGalleryTab === 'schoolAlbum' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {galleryCategories.schoolAlbum.map((image, index) => (
+                {galleryCategories.schoolAlbum.map((album, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, rotate: index % 2 === 0 ? -5 : 5 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#A78BFA] card-3d"
+                    onClick={() => album.images.length > 0 ? openGalleryGrid(album.images) : null}
+                    className={`relative rounded-3xl overflow-hidden group ${album.images.length > 0 ? 'cursor-pointer' : 'cursor-default'} h-96 shadow-[8px_8px_0px_#A78BFA] card-3d`}
                     data-testid={`gallery-image-school-album-${index}`}
                   >
                     <img
-                      src={image.url}
-                      alt={image.title}
+                      src={album.url}
+                      alt={album.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="absolute bottom-8 left-8 right-8">
                         <h3 className="text-white text-3xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
-                          {image.title}
+                          {album.title}
                         </h3>
-                        <p className="text-white/90 text-lg" style={{ fontFamily: 'Nunito' }}>
-                          {image.description}
+                        <p className="text-white/90 text-lg mb-2" style={{ fontFamily: 'Nunito' }}>
+                          {album.description}
                         </p>
+                        {album.images.length > 0 && (
+                          <p className="text-white/70 text-sm" style={{ fontFamily: 'Nunito' }}>
+                            Click to view {album.images.length} photos →
+                          </p>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -890,14 +913,14 @@ function HomePage() {
         </div>
       </footer>
 
-      {/* Image Gallery Modal */}
+      {/* Image Gallery Modal - Grid of Small Frames */}
       <AnimatePresence>
         {isGalleryOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
             onClick={closeGalleryViewer}
           >
             <button
@@ -908,41 +931,42 @@ function HomePage() {
               <X className="w-6 h-6 text-white" />
             </button>
 
-            <button
-              onClick={(e) => { e.stopPropagation(); prevImage(); }}
-              className="absolute left-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
-              data-testid="prev-image"
-            >
-              <ChevronLeft className="w-8 h-8 text-white" />
-            </button>
-
-            <button
-              onClick={(e) => { e.stopPropagation(); nextImage(); }}
-              className="absolute right-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
-              data-testid="next-image"
-            >
-              <ChevronRightIcon className="w-8 h-8 text-white" />
-            </button>
-
             <motion.div
-              key={currentImageIndex}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              className="max-w-6xl max-h-[90vh] w-full mx-4"
+              className="max-w-5xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={galleryImages[currentImageIndex]}
-                alt={`School Photo ${currentImageIndex + 1}`}
-                className="w-full h-full object-contain rounded-lg"
-                data-testid="gallery-image-viewer"
-              />
-              <div className="text-center mt-4">
-                <p className="text-white text-lg" style={{ fontFamily: 'Nunito' }}>
-                  Image {currentImageIndex + 1} of {galleryImages.length}
-                </p>
+              <h2 className="text-white text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'Fredoka' }}>
+                School Photos ({galleryImages.length})
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {galleryImages.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="relative rounded-2xl overflow-hidden group cursor-pointer h-64 border-4 border-white/20 hover:border-[#FACC15] transition-colors"
+                    data-testid={`gallery-grid-image-${index}`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title || `Photo ${index + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-white text-lg font-bold" style={{ fontFamily: 'Fredoka' }}>
+                          {image.title || `Photo ${index + 1}`}
+                        </h3>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </motion.div>

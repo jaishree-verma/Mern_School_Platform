@@ -18,29 +18,32 @@ function HomePage() {
 
   const galleryCategories = {
     achievements: [
-      { url: 'https://images.pexels.com/photos/9411422/pexels-photo-9411422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Young Champions' },
-      { url: 'https://images.pexels.com/photos/6125928/pexels-photo-6125928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Victory Moments' },
-      { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', title: 'Academic Excellence' },
+      { url: 'https://images.pexels.com/photos/9411422/pexels-photo-9411422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Young Champions', description: 'Our pride and joy' },
+      { url: 'https://images.pexels.com/photos/6125928/pexels-photo-6125928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'School Victory Moments', description: 'Celebrating excellence' },
     ],
     events: [
-      { url: 'https://images.unsplash.com/photo-1759675934052-1d82517c76c8?crop=entropy&cs=srgb&fm=jpg&w=800', title: 'Annual Day' },
-      { url: 'https://images.unsplash.com/photo-1774266854775-4831c6c516b3?crop=entropy&cs=srgb&fm=jpg&w=800', title: 'Sports Day' },
-      { url: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800', title: 'Science Fair' },
+      { url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800', title: 'School Trips', description: 'Adventures and learning beyond classroom' },
+      { url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800', title: 'Annual Prize Distribution Ceremony', description: 'Honoring achievements' },
     ],
     celebrations: [
-      { url: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800', title: 'Festival Celebrations' },
-      { url: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800', title: 'Independence Day' },
-      { url: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800', title: 'Republic Day' },
+      { url: 'https://images.unsplash.com/photo-1611770991819-89677a4a87c3?w=800', title: 'Republic Day', month: 'January', color: '#FF9933' },
+      { url: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800', title: 'Earth Day', month: 'April', color: '#34D399' },
+      { url: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800', title: 'World Environment Day', month: 'June', color: '#10B981' },
+      { url: 'https://images.unsplash.com/photo-1565690502656-2370a1f4d48a?w=800', title: 'Independence Day', month: 'August', color: '#38BDF8' },
+      { url: 'https://images.unsplash.com/photo-1628625294421-ee9e2a44ef1d?w=800', title: 'Janmashtmi', month: 'August', color: '#8B5CF6' },
+      { url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800', title: 'Teachers Day', month: 'September', color: '#F59E0B' },
+      { url: 'https://images.unsplash.com/photo-1583521214690-73421a1829a9?w=800', title: 'Dussehra', month: 'October', color: '#EF4444' },
+      { url: 'https://images.unsplash.com/photo-1605641490144-554d7f2ae740?w=800', title: 'Diwali', month: 'November', color: '#FACC15' },
+      { url: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800', title: 'Children\'s Day', month: 'November', color: '#FB7185' },
+      { url: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800', title: 'Christmas', month: 'December', color: '#DC2626' },
     ],
     classroom: [
-      { url: 'https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Learning Together' },
-      { url: 'https://images.pexels.com/photos/8363130/pexels-photo-8363130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Active Participation' },
-      { url: 'https://images.unsplash.com/photo-1603140841888-ef505a7f7045?crop=entropy&cs=srgb&fm=jpg&w=800', title: 'Bright Minds' },
+      { url: 'https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Learning', description: 'Building strong foundations' },
+      { url: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?w=800', title: 'Entertainment', description: 'Fun and engaging activities' },
     ],
-    aboutSchool: [
-      { url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800', title: 'School Campus' },
-      { url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800', title: 'Our Facilities' },
-      { url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800', title: 'Learning Environment' },
+    schoolAlbum: [
+      { url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800', title: 'School Photo', description: 'Our beautiful campus' },
+      { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', title: 'Memories', description: 'Treasured moments' },
     ],
   };
 
@@ -368,16 +371,16 @@ function HomePage() {
               Classroom Learning
             </button>
             <button
-              onClick={() => setActiveGalleryTab('aboutSchool')}
+              onClick={() => setActiveGalleryTab('schoolAlbum')}
               className={`px-6 py-3 rounded-full font-bold transition-all ${
-                activeGalleryTab === 'aboutSchool'
+                activeGalleryTab === 'schoolAlbum'
                   ? 'bg-[#A78BFA] text-white shadow-lg scale-105'
                   : 'bg-white text-[#475569] border-2 border-[#E2E8F0] hover:border-[#A78BFA]'
               }`}
               style={{ fontFamily: 'Nunito' }}
-              data-testid="gallery-tab-about-school"
+              data-testid="gallery-tab-school-album"
             >
-              About School
+              School Album
             </button>
           </div>
 
@@ -386,31 +389,171 @@ function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {galleryCategories[activeGalleryTab].map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative rounded-2xl overflow-hidden group cursor-pointer h-64"
-                data-testid={`gallery-image-${activeGalleryTab}-${index}`}
-              >
-                <img
-                  src={image.url}
-                  alt={image.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white text-xl font-bold" style={{ fontFamily: 'Fredoka' }}>
-                      {image.title}
-                    </h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            {/* Achievements Layout - Large Cards */}
+            {activeGalleryTab === 'achievements' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {galleryCategories.achievements.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#38BDF8]"
+                    data-testid={`gallery-image-achievements-${index}`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <h3 className="text-white text-3xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
+                          {image.title}
+                        </h3>
+                        <p className="text-white/90 text-lg" style={{ fontFamily: 'Nunito' }}>
+                          {image.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {/* Events Layout - Horizontal Cards */}
+            {activeGalleryTab === 'events' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {galleryCategories.events.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-80 shadow-[8px_8px_0px_#FACC15]"
+                    data-testid={`gallery-image-events-${index}`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h3 className="text-white text-2xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
+                          {image.title}
+                        </h3>
+                        <p className="text-white/90 text-base" style={{ fontFamily: 'Nunito' }}>
+                          {image.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {/* Celebrations Layout - Grid with Month Badges */}
+            {activeGalleryTab === 'celebrations' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {galleryCategories.celebrations.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative rounded-2xl overflow-hidden group cursor-pointer h-72 border-4 border-white shadow-xl hover:shadow-2xl transition-all"
+                    data-testid={`gallery-image-celebrations-${index}`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <div 
+                        className="px-4 py-2 rounded-full font-bold text-white shadow-lg"
+                        style={{ backgroundColor: image.color, fontFamily: 'Nunito' }}
+                      >
+                        {image.month}
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-white text-xl font-bold" style={{ fontFamily: 'Fredoka' }}>
+                          {image.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {/* Classroom Learning Layout - Split View */}
+            {activeGalleryTab === 'classroom' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {galleryCategories.classroom.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#34D399]"
+                    data-testid={`gallery-image-classroom-${index}`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <h3 className="text-white text-3xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
+                          {image.title}
+                        </h3>
+                        <p className="text-white/90 text-lg" style={{ fontFamily: 'Nunito' }}>
+                          {image.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {/* School Album Layout - Large Featured Cards */}
+            {activeGalleryTab === 'schoolAlbum' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {galleryCategories.schoolAlbum.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, rotate: index % 2 === 0 ? -5 : 5 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#A78BFA]"
+                    data-testid={`gallery-image-school-album-${index}`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <h3 className="text-white text-3xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
+                          {image.title}
+                        </h3>
+                        <p className="text-white/90 text-lg" style={{ fontFamily: 'Nunito' }}>
+                          {image.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

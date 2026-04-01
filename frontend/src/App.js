@@ -48,13 +48,14 @@ function HomePage() {
   };
 
   const classes = [
-    { name: 'Pre-Primary (PG)', color: '#FACC15', description: 'Foundation of learning through play' },
-    { name: 'Kindergarten', color: '#FB7185', description: 'Developing social and motor skills' },
+    { name: 'Otys Play group (Nursery)', color: '#FACC15', description: 'Foundation of learning through play' },
+    { name: 'LKG (Lower Kindergarten)', color: '#FB7185', description: 'Developing social and motor skills' },
+    { name: 'UKG (Upper Kindergarten)', color: '#A78BFA', description: 'Preparing for formal education' },
     { name: 'Class 1', color: '#38BDF8', description: 'Beginning formal education' },
     { name: 'Class 2', color: '#34D399', description: 'Building core concepts' },
-    { name: 'Class 3', color: '#A78BFA', description: 'Enhancing critical thinking' },
-    { name: 'Class 4', color: '#F472B6', description: 'Advanced learning modules' },
-    { name: 'Class 5', color: '#FB923C', description: 'Preparing for higher education' },
+    { name: 'Class 3', color: '#F472B6', description: 'Enhancing critical thinking' },
+    { name: 'Class 4', color: '#FB923C', description: 'Advanced learning modules' },
+    { name: 'Class 5', color: '#8B5CF6', description: 'Preparing for higher education' },
   ];
 
   return (
@@ -257,7 +258,7 @@ function HomePage() {
               style={{ fontFamily: 'Nunito' }}
               data-testid="hero-subtitle"
             >
-              Nurturing young minds from Pre-Primary to Class 5 with love, care, and excellence
+              Nurturing young minds from Nursery to Class 5 with love, care, and excellence
             </motion.p>
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
@@ -285,7 +286,7 @@ function HomePage() {
               Our Learning Journey
             </h2>
             <p className="text-base md:text-lg font-medium text-[#475569] max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'Nunito' }} data-testid="about-description">
-              From tiny tots to brilliant scholars - watch them grow!
+              From Nursery to Class 5 - watch them grow!
             </p>
           </div>
 
@@ -652,10 +653,19 @@ function HomePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="rounded-3xl overflow-hidden border-8 border-[#38BDF8]"
+            className="rounded-3xl overflow-hidden border-8 border-[#38BDF8] relative group"
             style={{ height: '500px' }}
             data-testid="location-map"
           >
+            <a 
+              href="https://www.google.com/maps/place/199+Awadhpuri+Rd,+Lakhanpur,+Vikas+Nagar,+Kanpur,+Uttar+Pradesh+208024/@26.4499,80.3296,17z" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="absolute top-4 right-4 z-10 bg-white px-4 py-2 rounded-full shadow-lg font-bold text-[#38BDF8] hover:bg-[#38BDF8] hover:text-white transition-colors"
+              style={{ fontFamily: 'Nunito' }}
+            >
+              Open in Google Maps →
+            </a>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.7!2d80.3296!3d26.4499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c47f0bb28c0ff%3A0x93b5bc5ab7ca8f62!2s199%20Awadhpuri%20Rd%2C%20Lakhanpur%2C%20Vikas%20Nagar%2C%20Kanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1703001234567!5m2!1sen!2sin"
               width="100%"

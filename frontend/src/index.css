@@ -119,6 +119,25 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Admission Banner Scrolling Animation */
+.admission-scroll {
+  display: inline-block;
+  animation: scroll-left 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.admission-scroll:hover {
+  animation-play-state: paused;
+}
+
 /* Hide Emergent branding */
 [href*="emergent.sh"],
 a[href*="emergent"],

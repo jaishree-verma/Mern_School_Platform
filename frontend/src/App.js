@@ -331,6 +331,32 @@ function HomePage() {
         </div>
       </nav>
 
+      {/* Admission Announcement Banner */}
+      <div className="fixed top-24 left-0 right-0 z-40 bg-gradient-to-r from-[#38BDF8] via-[#FACC15] to-[#FB7185] py-3 overflow-hidden" data-testid="admission-banner">
+        <div className="admission-scroll">
+          <div className="admission-text whitespace-nowrap inline-block" style={{ fontFamily: 'Nunito' }}>
+            <span className="text-white text-lg font-bold mx-8">
+              🎓 Admission Open for 2026-27 
+            </span>
+            <span className="text-white text-lg font-bold mx-8">
+              📚 Affiliated to CBSE Board 
+            </span>
+            <span className="text-white text-lg font-bold mx-8">
+              📞 Contact School Office Now for Admission Process
+            </span>
+            <span className="text-white text-lg font-bold mx-8">
+              🎓 Admission Open for 2026-27 
+            </span>
+            <span className="text-white text-lg font-bold mx-8">
+              📚 Affiliated to CBSE Board 
+            </span>
+            <span className="text-white text-lg font-bold mx-8">
+              📞 Contact School Office Now for Admission Process
+            </span>
+          </div>
+        </div>
+      </div>
+
       <section id="home" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#FAFAF9] via-[#E0F2FE] to-[#FEF3C7]" data-testid="hero-section">
         <div className="absolute inset-0">
           <motion.div

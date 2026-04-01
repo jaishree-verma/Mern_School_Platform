@@ -475,9 +475,9 @@ function HomePage() {
           </motion.div>
         </div>
         
-        <div className="relative z-10 flex items-center justify-center min-h-screen px-4 pt-40">
-          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="text-center lg:text-left order-2 lg:order-1">
+        <div className="relative z-10 flex items-start justify-center min-h-screen px-4 pt-48">
+          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="text-center lg:text-left order-2 lg:order-1 mt-8">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -520,20 +520,20 @@ function HomePage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="order-1 lg:order-2"
+              className="order-1 lg:order-2 mt-8"
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-[12px_12px_0px_#38BDF8] card-3d max-w-md mx-auto">
+              <div className="relative rounded-3xl overflow-hidden shadow-[10px_10px_0px_#38BDF8] card-3d max-w-sm mx-auto">
                 <img
                   src="https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0"
                   alt="Springers School Building"
                   className="w-full h-auto object-cover rounded-3xl"
                   data-testid="hero-school-image"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                  <h3 className="text-white text-xl font-bold mb-1" style={{ fontFamily: 'Fredoka' }}>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                  <h3 className="text-white text-lg font-bold mb-1" style={{ fontFamily: 'Fredoka' }}>
                     Springers School
                   </h3>
-                  <p className="text-white/90 text-sm" style={{ fontFamily: 'Nunito' }}>
+                  <p className="text-white/90 text-xs" style={{ fontFamily: 'Nunito' }}>
                     A nurturing environment
                   </p>
                 </div>

@@ -611,7 +611,7 @@ function HomePage() {
                 Email
               </h3>
               <p className="text-base font-semibold text-[#FACC15] break-words" style={{ fontFamily: 'Nunito' }}>
-                springerschool2004<br />@gmail.com
+                springerschool2000<br />@gmail.com
               </p>
             </motion.div>
 
@@ -680,7 +680,7 @@ function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-[#1E293B] text-white py-12 px-4 md:px-8" data-testid="footer">
+      <footer className="bg-gradient-to-r from-[#667EEA] to-[#764BA2] text-white py-12 px-4 md:px-8" data-testid="footer">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <School className="w-8 h-8 text-[#FACC15]" />

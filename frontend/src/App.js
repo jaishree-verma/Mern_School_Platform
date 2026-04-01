@@ -258,7 +258,7 @@ function HomePage() {
               style={{ fontFamily: 'Nunito' }}
               data-testid="hero-subtitle"
             >
-              Nurturing young minds from Nursery to Class 5 with love, care, and excellence
+              Nurturing young minds from Play Group to Class 5 with love, care, and excellence
             </motion.p>
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
@@ -286,7 +286,7 @@ function HomePage() {
               Our Learning Journey
             </h2>
             <p className="text-base md:text-lg font-medium text-[#475569] max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'Nunito' }} data-testid="about-description">
-              From Nursery to Class 5 - watch them grow!
+              From Play Group to Class 5 - watch them grow!
             </p>
           </div>
 

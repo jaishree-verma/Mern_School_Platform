@@ -65,6 +65,178 @@ function HomePage() {
         <div className="floating-shape" style={{ width: '400px', height: '400px', background: '#FACC15', top: '60%', right: '10%', animationDelay: '5s' }}></div>
         <div className="floating-shape" style={{ width: '250px', height: '250px', background: '#FB7185', bottom: '20%', left: '15%', animationDelay: '10s' }}></div>
         <div className="floating-shape" style={{ width: '350px', height: '350px', background: '#34D399', top: '30%', right: '20%', animationDelay: '7s' }}></div>
+        
+        {/* Animated Icons Throughout Background */}
+        <motion.div
+          className="absolute top-[15%] left-[10%]"
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 10, 0]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <Star className="w-8 h-8 text-[#FACC15]" fill="#FACC15" />
+          </div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-[25%] right-[15%]"
+          animate={{
+            y: [0, 25, 0],
+            rotate: [0, -15, 0]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        >
+          <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <BookOpen className="w-10 h-10 text-[#38BDF8]" />
+          </div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-[45%] left-[8%]"
+          animate={{
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        >
+          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <Users className="w-7 h-7 text-[#FB7185]" />
+          </div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-[30%] right-[25%]"
+          animate={{
+            y: [0, 20, 0],
+            rotate: [0, 20, 0]
+          }}
+          transition={{
+            duration: 4.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5
+          }}
+        >
+          <div className="w-12 h-12 rounded-full bg-[#FACC15]/30 backdrop-blur-sm" />
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-[65%] left-[20%]"
+          animate={{
+            y: [0, -25, 0],
+            rotate: [0, -10, 0]
+          }}
+          transition={{
+            duration: 5.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2.5
+          }}
+        >
+          <div className="w-18 h-18 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center p-4">
+            <Heart className="w-9 h-9 text-[#FB7185]" fill="#FB7185" />
+          </div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-[15%] left-[35%]"
+          animate={{
+            y: [0, 18, 0],
+            scale: [1, 1.15, 1]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3
+          }}
+        >
+          <div className="w-10 h-10 rounded-full bg-[#38BDF8]/30 backdrop-blur-sm" />
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-[55%] right-[12%]"
+          animate={{
+            y: [0, -22, 0],
+            rotate: [0, 15, 0]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5
+          }}
+        >
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <Star className="w-8 h-8 text-[#34D399]" fill="#34D399" />
+          </div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-[80%] right-[30%]"
+          animate={{
+            y: [0, 28, 0],
+            rotate: [0, -12, 0]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.8
+          }}
+        >
+          <div className="w-14 h-14 rounded-full bg-[#FB7185]/30 backdrop-blur-sm" />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-[40%] left-[45%]"
+          animate={{
+            y: [0, -18, 0],
+            rotate: [0, 8, 0]
+          }}
+          transition={{
+            duration: 4.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2.2
+          }}
+        >
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <BookOpen className="w-8 h-8 text-[#A78BFA]" />
+          </div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-[35%] left-[60%]"
+          animate={{
+            y: [0, 24, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3.5
+          }}
+        >
+          <div className="w-12 h-12 rounded-full bg-[#34D399]/30 backdrop-blur-sm" />
+        </motion.div>
       </div>
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl" data-testid="main-navigation">
         <div className="backdrop-blur-xl bg-white/80 rounded-full shadow-[0_4px_32px_rgba(0,0,0,0.1)] px-6 py-4">

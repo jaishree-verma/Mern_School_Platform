@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { School, Phone, Mail, MapPin, ChevronRight, BookOpen, Users, Star, Heart } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { School, Phone, Mail, MapPin, ChevronRight, BookOpen, Users, Star, Heart, X, ChevronLeft, ChevronRight as ChevronRightIcon } from 'lucide-react';
 import '@/App.css';
 
 function HomePage() {
   const [activeSection, setActiveSection] = useState('home');
   const [activeGalleryTab, setActiveGalleryTab] = useState('achievements');
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [galleryImages, setGalleryImages] = useState([]);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -42,10 +45,41 @@ function HomePage() {
       { url: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?w=800', title: 'Entertainment', description: 'Fun and engaging activities' },
     ],
     schoolAlbum: [
-      { url: 'https://drive.google.com/uc?export=view&id=14eH48FzKgI-U6LNSbD9s44z10inT_QW0', title: 'School Photo', description: 'Our beautiful campus' },
-      { url: 'https://drive.google.com/uc?export=view&id=1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i', title: 'School Photo', description: 'Learning environment' },
-      { url: 'https://drive.google.com/uc?export=view&id=1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT', title: 'Memories', description: 'Treasured moments' },
+      { 
+        url: 'https://drive.google.com/uc?export=view&id=14eH48FzKgI-U6LNSbD9s44z10inT_QW0', 
+        title: 'School Photo', 
+        description: 'Our beautiful campus',
+        images: [
+          'https://drive.google.com/uc?export=view&id=14eH48FzKgI-U6LNSbD9s44z10inT_QW0',
+          'https://drive.google.com/uc?export=view&id=1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i',
+          'https://drive.google.com/uc?export=view&id=1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT'
+        ]
+      },
+      { 
+        url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', 
+        title: 'Memories', 
+        description: 'Treasured moments',
+        images: []
+      },
     ],
+  };
+
+  const openGalleryViewer = (images, startIndex = 0) => {
+    setGalleryImages(images);
+    setCurrentImageIndex(startIndex);
+    setIsGalleryOpen(true);
+  };
+
+  const closeGalleryViewer = () => {
+    setIsGalleryOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
   };
 
   const classes = [
@@ -703,31 +737,37 @@ function HomePage() {
               </div>
             )}
 
-            {/* School Album Layout - Large Featured Cards */}
+            {/* School Album Layout - Clickable Cards with Gallery */}
             {activeGalleryTab === 'schoolAlbum' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {galleryCategories.schoolAlbum.map((image, index) => (
+                {galleryCategories.schoolAlbum.map((album, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, rotate: index % 2 === 0 ? -5 : 5 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#A78BFA] card-3d"
+                    onClick={() => album.images.length > 0 ? openGalleryViewer(album.images, 0) : null}
+                    className={`relative rounded-3xl overflow-hidden group ${album.images.length > 0 ? 'cursor-pointer' : 'cursor-default'} h-96 shadow-[8px_8px_0px_#A78BFA] card-3d`}
                     data-testid={`gallery-image-school-album-${index}`}
                   >
                     <img
-                      src={image.url}
-                      alt={image.title}
+                      src={album.url}
+                      alt={album.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="absolute bottom-8 left-8 right-8">
                         <h3 className="text-white text-3xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
-                          {image.title}
+                          {album.title}
                         </h3>
-                        <p className="text-white/90 text-lg" style={{ fontFamily: 'Nunito' }}>
-                          {image.description}
+                        <p className="text-white/90 text-lg mb-2" style={{ fontFamily: 'Nunito' }}>
+                          {album.description}
                         </p>
+                        {album.images.length > 0 && (
+                          <p className="text-white/70 text-sm" style={{ fontFamily: 'Nunito' }}>
+                            Click to view {album.images.length} photos →
+                          </p>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -867,6 +907,65 @@ function HomePage() {
           </p>
         </div>
       </footer>
+
+      {/* Image Gallery Modal */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+            onClick={closeGalleryViewer}
+          >
+            <button
+              onClick={closeGalleryViewer}
+              className="absolute top-4 right-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+              data-testid="close-gallery"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+              data-testid="prev-image"
+            >
+              <ChevronLeft className="w-8 h-8 text-white" />
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+              data-testid="next-image"
+            >
+              <ChevronRightIcon className="w-8 h-8 text-white" />
+            </button>
+
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-6xl max-h-[90vh] w-full mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={galleryImages[currentImageIndex]}
+                alt={`School Photo ${currentImageIndex + 1}`}
+                className="w-full h-full object-contain rounded-lg"
+                data-testid="gallery-image-viewer"
+              />
+              <div className="text-center mt-4">
+                <p className="text-white text-lg" style={{ fontFamily: 'Nunito' }}>
+                  Image {currentImageIndex + 1} of {galleryImages.length}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

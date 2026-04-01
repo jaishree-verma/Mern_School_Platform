@@ -45,22 +45,10 @@ function HomePage() {
       { url: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?w=800', title: 'Entertainment', description: 'Fun and engaging activities' },
     ],
     schoolAlbum: [
-      { 
-        url: 'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0', 
-        title: 'School Photo', 
-        description: 'Our beautiful campus',
-        images: [
-          'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0',
-          'https://lh3.googleusercontent.com/d/1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i',
-          'https://lh3.googleusercontent.com/d/1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT'
-        ]
-      },
-      { 
-        url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', 
-        title: 'Memories', 
-        description: 'Treasured moments',
-        images: []
-      },
+      { url: 'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0', title: 'School Photo 1', description: 'Our beautiful campus' },
+      { url: 'https://lh3.googleusercontent.com/d/1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i', title: 'School Photo 2', description: 'Learning environment' },
+      { url: 'https://lh3.googleusercontent.com/d/1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT', title: 'School Photo 3', description: 'Campus view' },
+      { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', title: 'Memories', description: 'Treasured moments' },
     ],
   };
 
@@ -737,37 +725,31 @@ function HomePage() {
               </div>
             )}
 
-            {/* School Album Layout - Clickable Cards with Gallery */}
+            {/* School Album Layout - Grid Gallery */}
             {activeGalleryTab === 'schoolAlbum' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {galleryCategories.schoolAlbum.map((album, index) => (
+                {galleryCategories.schoolAlbum.map((image, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, rotate: index % 2 === 0 ? -5 : 5 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    onClick={() => album.images.length > 0 ? openGalleryViewer(album.images, 0) : null}
-                    className={`relative rounded-3xl overflow-hidden group ${album.images.length > 0 ? 'cursor-pointer' : 'cursor-default'} h-96 shadow-[8px_8px_0px_#A78BFA] card-3d`}
+                    className="relative rounded-3xl overflow-hidden group cursor-pointer h-96 shadow-[8px_8px_0px_#A78BFA] card-3d"
                     data-testid={`gallery-image-school-album-${index}`}
                   >
                     <img
-                      src={album.url}
-                      alt={album.title}
+                      src={image.url}
+                      alt={image.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="absolute bottom-8 left-8 right-8">
                         <h3 className="text-white text-3xl font-bold mb-2" style={{ fontFamily: 'Fredoka' }}>
-                          {album.title}
+                          {image.title}
                         </h3>
-                        <p className="text-white/90 text-lg mb-2" style={{ fontFamily: 'Nunito' }}>
-                          {album.description}
+                        <p className="text-white/90 text-lg" style={{ fontFamily: 'Nunito' }}>
+                          {image.description}
                         </p>
-                        {album.images.length > 0 && (
-                          <p className="text-white/70 text-sm" style={{ fontFamily: 'Nunito' }}>
-                            Click to view {album.images.length} photos →
-                          </p>
-                        )}
                       </div>
                     </div>
                   </motion.div>

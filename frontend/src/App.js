@@ -278,7 +278,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="about" className="py-24 px-4 md:px-8" data-testid="about-section">
+      <section id="about" className="py-24 px-4 md:px-8 relative" data-testid="about-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E293B] mb-4 tracking-tighter" style={{ fontFamily: 'Fredoka' }} data-testid="about-title">
@@ -316,7 +316,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="gallery" className="py-24 px-4 md:px-8 bg-white" data-testid="gallery-section">
+      <section id="gallery" className="py-24 px-4 md:px-8 relative" data-testid="gallery-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E293B] mb-4 tracking-tighter" style={{ fontFamily: 'Fredoka' }} data-testid="gallery-title">
@@ -564,7 +564,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="py-24 px-4 md:px-8" data-testid="contact-section">
+      <section id="contact" className="py-24 px-4 md:px-8 relative" data-testid="contact-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E293B] mb-4 tracking-tighter" style={{ fontFamily: 'Fredoka' }} data-testid="contact-title">
@@ -636,7 +636,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="location" className="py-24 px-4 md:px-8 bg-white" data-testid="location-section">
+      <section id="location" className="py-24 px-4 md:px-8 relative" data-testid="location-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E293B] mb-4 tracking-tighter" style={{ fontFamily: 'Fredoka' }} data-testid="location-title">

@@ -475,44 +475,70 @@ function HomePage() {
           </motion.div>
         </div>
         
-        <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-          <div className="text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-bold text-[#1E293B] mb-6 tracking-tighter"
-              style={{ fontFamily: 'Fredoka' }}
-              data-testid="hero-title"
+        <div className="relative z-10 flex items-center justify-center min-h-screen px-4 pt-32">
+          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E293B] mb-6 tracking-tighter"
+                style={{ fontFamily: 'Fredoka' }}
+                data-testid="hero-title"
+              >
+                Welcome to<br />
+                <span className="text-[#38BDF8]">Springers School</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-base md:text-lg font-bold text-[#475569] mb-8 leading-relaxed"
+                style={{ fontFamily: 'Nunito' }}
+                data-testid="hero-subtitle"
+              >
+                Nurturing young minds from Play Group to Class 5 with love, care, and excellence
+              </motion.p>
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                onClick={() => {
+                  const element = document.getElementById('about');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-8 py-4 bg-[#FACC15] text-[#1E293B] font-bold rounded-full hover:-translate-y-1 active:translate-y-0 transition-transform inline-flex items-center space-x-2"
+                style={{ fontFamily: 'Nunito' }}
+                data-testid="hero-cta-button"
+              >
+                <span>Explore Our School</span>
+                <ChevronRight className="w-5 h-5" />
+              </motion.button>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="order-1 lg:order-2"
             >
-              Welcome to<br />
-              <span className="text-[#38BDF8]">Springers School</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base md:text-lg font-bold text-[#475569] mb-8 max-w-2xl mx-auto leading-relaxed"
-              style={{ fontFamily: 'Nunito' }}
-              data-testid="hero-subtitle"
-            >
-              Nurturing young minds from Play Group to Class 5 with love, care, and excellence
-            </motion.p>
-            <motion.button
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              onClick={() => {
-                const element = document.getElementById('about');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-8 py-4 bg-[#FACC15] text-[#1E293B] font-bold rounded-full hover:-translate-y-1 active:translate-y-0 transition-transform inline-flex items-center space-x-2"
-              style={{ fontFamily: 'Nunito' }}
-              data-testid="hero-cta-button"
-            >
-              <span>Explore Our School</span>
-              <ChevronRight className="w-5 h-5" />
-            </motion.button>
+              <div className="relative rounded-3xl overflow-hidden shadow-[16px_16px_0px_#38BDF8] card-3d max-w-lg mx-auto">
+                <img
+                  src="https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0"
+                  alt="Springers School Building"
+                  className="w-full h-auto object-cover rounded-3xl"
+                  data-testid="hero-school-image"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                  <h3 className="text-white text-2xl font-bold mb-1" style={{ fontFamily: 'Fredoka' }}>
+                    Springers School
+                  </h3>
+                  <p className="text-white/90 text-base" style={{ fontFamily: 'Nunito' }}>
+                    A nurturing environment for young learners
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

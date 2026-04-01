@@ -6,6 +6,7 @@ import '@/App.css';
 
 function HomePage() {
   const [activeSection, setActiveSection] = useState('home');
+  const [activeGalleryTab, setActiveGalleryTab] = useState('achievements');
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -15,15 +16,33 @@ function HomePage() {
     }
   };
 
-  const galleryImages = [
-    { url: 'https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', category: 'Classroom', title: 'Learning Together' },
-    { url: 'https://images.pexels.com/photos/8363130/pexels-photo-8363130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', category: 'Classroom', title: 'Active Participation' },
-    { url: 'https://images.unsplash.com/photo-1603140841888-ef505a7f7045?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHw0fHxlbGVtZW50YXJ5JTIwc2Nob29sJTIwY2xhc3Nyb29tJTIwa2lkc3xlbnwwfHx8fDE3NzQ5MzUxNzB8MA&ixlib=rb-4.1.0&q=85', category: 'Classroom', title: 'Bright Minds' },
-    { url: 'https://images.unsplash.com/photo-1759675934052-1d82517c76c8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwzfHxjaGlsZHJlbiUyMHNjaG9vbCUyMGV2ZW50JTIwb3V0ZG9vcnxlbnwwfHx8fDE3NzQ5MzUxNzF8MA&ixlib=rb-4.1.0&q=85', category: 'Events', title: 'School Events' },
-    { url: 'https://images.unsplash.com/photo-1774266854775-4831c6c516b3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMHNjaG9vbCUyMGV2ZW50JTIwb3V0ZG9vcnxlbnwwfHx8fDE3NzQ5MzUxNzF8MA&ixlib=rb-4.1.0&q=85', category: 'Events', title: 'Celebration Time' },
-    { url: 'https://images.pexels.com/photos/9411422/pexels-photo-9411422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', category: 'Achievements', title: 'Young Champions' },
-    { url: 'https://images.pexels.com/photos/6125928/pexels-photo-6125928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', category: 'Achievements', title: 'Victory Moments' },
-  ];
+  const galleryCategories = {
+    achievements: [
+      { url: 'https://images.pexels.com/photos/9411422/pexels-photo-9411422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Young Champions' },
+      { url: 'https://images.pexels.com/photos/6125928/pexels-photo-6125928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Victory Moments' },
+      { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800', title: 'Academic Excellence' },
+    ],
+    events: [
+      { url: 'https://images.unsplash.com/photo-1759675934052-1d82517c76c8?crop=entropy&cs=srgb&fm=jpg&w=800', title: 'Annual Day' },
+      { url: 'https://images.unsplash.com/photo-1774266854775-4831c6c516b3?crop=entropy&cs=srgb&fm=jpg&w=800', title: 'Sports Day' },
+      { url: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800', title: 'Science Fair' },
+    ],
+    celebrations: [
+      { url: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800', title: 'Festival Celebrations' },
+      { url: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800', title: 'Independence Day' },
+      { url: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800', title: 'Republic Day' },
+    ],
+    classroom: [
+      { url: 'https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Learning Together' },
+      { url: 'https://images.pexels.com/photos/8363130/pexels-photo-8363130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Active Participation' },
+      { url: 'https://images.unsplash.com/photo-1603140841888-ef505a7f7045?crop=entropy&cs=srgb&fm=jpg&w=800', title: 'Bright Minds' },
+    ],
+    aboutSchool: [
+      { url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800', title: 'School Campus' },
+      { url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800', title: 'Our Facilities' },
+      { url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800', title: 'Learning Environment' },
+    ],
+  };
 
   const classes = [
     { name: 'Pre-Primary (PG)', color: '#FACC15', description: 'Foundation of learning through play' },
@@ -299,16 +318,84 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="gallery-grid">
-            {galleryImages.map((image, index) => (
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <button
+              onClick={() => setActiveGalleryTab('achievements')}
+              className={`px-6 py-3 rounded-full font-bold transition-all ${
+                activeGalleryTab === 'achievements'
+                  ? 'bg-[#38BDF8] text-white shadow-lg scale-105'
+                  : 'bg-white text-[#475569] border-2 border-[#E2E8F0] hover:border-[#38BDF8]'
+              }`}
+              style={{ fontFamily: 'Nunito' }}
+              data-testid="gallery-tab-achievements"
+            >
+              Achievements
+            </button>
+            <button
+              onClick={() => setActiveGalleryTab('events')}
+              className={`px-6 py-3 rounded-full font-bold transition-all ${
+                activeGalleryTab === 'events'
+                  ? 'bg-[#FACC15] text-[#1E293B] shadow-lg scale-105'
+                  : 'bg-white text-[#475569] border-2 border-[#E2E8F0] hover:border-[#FACC15]'
+              }`}
+              style={{ fontFamily: 'Nunito' }}
+              data-testid="gallery-tab-events"
+            >
+              Events
+            </button>
+            <button
+              onClick={() => setActiveGalleryTab('celebrations')}
+              className={`px-6 py-3 rounded-full font-bold transition-all ${
+                activeGalleryTab === 'celebrations'
+                  ? 'bg-[#FB7185] text-white shadow-lg scale-105'
+                  : 'bg-white text-[#475569] border-2 border-[#E2E8F0] hover:border-[#FB7185]'
+              }`}
+              style={{ fontFamily: 'Nunito' }}
+              data-testid="gallery-tab-celebrations"
+            >
+              Celebrations
+            </button>
+            <button
+              onClick={() => setActiveGalleryTab('classroom')}
+              className={`px-6 py-3 rounded-full font-bold transition-all ${
+                activeGalleryTab === 'classroom'
+                  ? 'bg-[#34D399] text-white shadow-lg scale-105'
+                  : 'bg-white text-[#475569] border-2 border-[#E2E8F0] hover:border-[#34D399]'
+              }`}
+              style={{ fontFamily: 'Nunito' }}
+              data-testid="gallery-tab-classroom"
+            >
+              Classroom Learning
+            </button>
+            <button
+              onClick={() => setActiveGalleryTab('aboutSchool')}
+              className={`px-6 py-3 rounded-full font-bold transition-all ${
+                activeGalleryTab === 'aboutSchool'
+                  ? 'bg-[#A78BFA] text-white shadow-lg scale-105'
+                  : 'bg-white text-[#475569] border-2 border-[#E2E8F0] hover:border-[#A78BFA]'
+              }`}
+              style={{ fontFamily: 'Nunito' }}
+              data-testid="gallery-tab-about-school"
+            >
+              About School
+            </button>
+          </div>
+
+          <motion.div
+            key={activeGalleryTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {galleryCategories[activeGalleryTab].map((image, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="relative rounded-2xl overflow-hidden group cursor-pointer"
-                data-testid={`gallery-image-${index}`}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative rounded-2xl overflow-hidden group cursor-pointer h-64"
+                data-testid={`gallery-image-${activeGalleryTab}-${index}`}
               >
                 <img
                   src={image.url}
@@ -317,9 +404,6 @@ function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-3 py-1 bg-[#FACC15] text-[#1E293B] text-sm font-bold rounded-full mb-2" style={{ fontFamily: 'Nunito' }}>
-                      {image.category}
-                    </span>
                     <h3 className="text-white text-xl font-bold" style={{ fontFamily: 'Fredoka' }}>
                       {image.title}
                     </h3>
@@ -327,7 +411,7 @@ function HomePage() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -376,8 +460,8 @@ function HomePage() {
               <h3 className="text-2xl font-bold text-[#1E293B] mb-2" style={{ fontFamily: 'Fredoka' }}>
                 Email
               </h3>
-              <p className="text-lg font-semibold text-[#FACC15]" style={{ fontFamily: 'Nunito' }}>
-                springerschool2004@gmail.com
+              <p className="text-base font-semibold text-[#FACC15] break-words" style={{ fontFamily: 'Nunito' }}>
+                springerschool2004<br />@gmail.com
               </p>
             </motion.div>
 

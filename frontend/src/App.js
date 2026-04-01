@@ -48,7 +48,7 @@ function HomePage() {
   };
 
   const classes = [
-    { name: 'Otys Play group (Nursery)', color: '#FACC15', description: 'Foundation of learning through play' },
+    { name: 'Play Group, Nursery', color: '#FACC15', description: 'Foundation of learning through play' },
     { name: 'LKG (Lower Kindergarten)', color: '#FB7185', description: 'Developing social and motor skills' },
     { name: 'UKG (Upper Kindergarten)', color: '#A78BFA', description: 'Preparing for formal education' },
     { name: 'Class 1', color: '#38BDF8', description: 'Beginning formal education' },
@@ -658,7 +658,7 @@ function HomePage() {
             data-testid="location-map"
           >
             <a 
-              href="https://www.google.com/maps/place/199+Awadhpuri+Rd,+Lakhanpur,+Vikas+Nagar,+Kanpur,+Uttar+Pradesh+208024/@26.4499,80.3296,17z" 
+              href="https://maps.app.goo.gl/j97CUKAJeuKgrqHg9" 
               target="_blank" 
               rel="noopener noreferrer"
               className="absolute top-4 right-4 z-10 bg-white px-4 py-2 rounded-full shadow-lg font-bold text-[#38BDF8] hover:bg-[#38BDF8] hover:text-white transition-colors"

@@ -46,13 +46,13 @@ function HomePage() {
     ],
     schoolAlbum: [
       { 
-        url: 'https://drive.google.com/uc?export=view&id=14eH48FzKgI-U6LNSbD9s44z10inT_QW0', 
+        url: 'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0', 
         title: 'School Photo', 
         description: 'Our beautiful campus',
         images: [
-          'https://drive.google.com/uc?export=view&id=14eH48FzKgI-U6LNSbD9s44z10inT_QW0',
-          'https://drive.google.com/uc?export=view&id=1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i',
-          'https://drive.google.com/uc?export=view&id=1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT'
+          'https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0',
+          'https://lh3.googleusercontent.com/d/1ovYZV3wpnT8aWRLhJuclo7z8kHUa0-4i',
+          'https://lh3.googleusercontent.com/d/1ZUGSnOynX9Y-dAox6Lor4fCO01N78rMT'
         ]
       },
       { 

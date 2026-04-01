@@ -680,17 +680,17 @@ function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-r from-[#667EEA] to-[#764BA2] text-white py-12 px-4 md:px-8" data-testid="footer">
+      <footer className="bg-white text-[#1E3A8A] py-12 px-4 md:px-8 border-t-4 border-[#38BDF8]" data-testid="footer">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <School className="w-8 h-8 text-[#FACC15]" />
             <span className="text-2xl font-bold" style={{ fontFamily: 'Fredoka' }}>Springers School</span>
           </div>
-          <p className="text-base font-medium text-gray-400 mb-4" style={{ fontFamily: 'Nunito' }}>
+          <p className="text-base font-medium text-[#475569] mb-4" style={{ fontFamily: 'Nunito' }}>
             Shaping tomorrow's leaders, one child at a time
           </p>
-          <p className="text-sm text-gray-500" style={{ fontFamily: 'Nunito' }}>
-            © 2004 Springers School. All rights reserved.
+          <p className="text-sm text-[#475569]" style={{ fontFamily: 'Nunito' }}>
+            © 2000 Springers School. All rights reserved.
           </p>
         </div>
       </footer>

@@ -1,4 +1,4 @@
-# MERN Based School Application built using Emergent-AI 
+# MERN Based School Application built using Emergent-AI Tool 
 
 ##### A full-stack **School Management Web Application** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)** and developed with the help of **Emergent AI**.  This application helps schools manage students, teachers, events, and academic records through a simple and user-friendly interface.
 

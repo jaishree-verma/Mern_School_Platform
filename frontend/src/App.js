@@ -556,7 +556,7 @@ function HomePage() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-[10px_10px_0px_#38BDF8] card-3d max-w-sm mx-auto">
                 <img
-                  src="https://lh3.googleusercontent.com/d/14eH48FzKgI-U6LNSbD9s44z10inT_QW0"
+                  src="https://lh3.googleusercontent.com/d/1qA7c7n46MWb7qG8p7cLViyxpIjqRgyKa"
                   alt="Springers School Building"
                   className="w-full h-auto object-cover rounded-3xl"
                   data-testid="hero-school-image"
@@ -788,24 +788,22 @@ function HomePage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: index * 0.05 }}
                         onClick={() => setSelectedMonth(monthData)}
-                        className="relative rounded-2xl overflow-hidden card-3d cursor-pointer h-52 border-4 border-white hover:border-current transition-colors group"
+                        className="bg-white rounded-2xl p-5 card-3d cursor-pointer text-center border-4 border-white hover:border-current transition-colors"
                         style={{ boxShadow: `6px 6px 0px ${monthData.color}` }}
                         data-testid={`month-${monthData.month.toLowerCase()}`}
                       >
-                        <img
-                          src={monthData.festivals[0].thumbnail}
-                          alt={monthData.month}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
-                          <div className="absolute bottom-4 left-0 right-0 text-center">
-                            <h3 className="text-xl font-bold text-white drop-shadow-lg" style={{ fontFamily: 'Fredoka' }}>
-                              {monthData.month}
-                            </h3>
-                            <p className="text-xs text-white/80 mt-1" style={{ fontFamily: 'Nunito' }}>
-                              {monthData.festivals.map(f => f.name).join(', ')}
+                        <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ backgroundColor: monthData.color }}>
+                          <Star className="w-7 h-7 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-[#1E293B]" style={{ fontFamily: 'Fredoka' }}>
+                          {monthData.month}
+                        </h3>
+                        <div className="mt-2 space-y-1">
+                          {monthData.festivals.map((f, i) => (
+                            <p key={i} className="text-xs font-semibold px-2 py-1 rounded-full inline-block mx-0.5" style={{ backgroundColor: `${monthData.color}20`, color: monthData.color, fontFamily: 'Nunito' }}>
+                              {f.name} Celebrated
                             </p>
-                          </div>
+                          ))}
                         </div>
                       </motion.div>
                     ))}

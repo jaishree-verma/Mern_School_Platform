@@ -60,7 +60,8 @@ function HomePage() {
           { type: 'image', url: 'https://lh3.googleusercontent.com/d/1ERBruyokXy2VG-FsJuVm3J0GdUB0k-NH' },
           { type: 'image', url: 'https://lh3.googleusercontent.com/d/1qX0kdUZ7rje8oCIGAMkJLnMUpl9EJ85G' },
           { type: 'image', url: 'https://lh3.googleusercontent.com/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26' },
-          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1eEdXKgLxrtxXg8FpcjFILi0X55LmFB5q' }
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1eEdXKgLxrtxXg8FpcjFILi0X55LmFB5q' },
+          { type: 'video', url: 'https://drive.google.com/file/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26/preview' }
         ]}
       ]},
       { month: 'December', color: '#DC2626', festivals: [
@@ -1173,13 +1174,13 @@ function HomePage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="max-w-5xl max-h-[85vh] w-full mx-4"
+              className="max-w-md max-h-[60vh] w-full mx-4"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={viewingPhoto}
                 alt="Full view"
-                className="w-full h-full object-contain rounded-lg"
+                className="w-full h-auto max-h-[55vh] object-contain rounded-lg"
               />
               {viewingPhotoList.length > 1 && (
                 <p className="text-white text-center mt-4 text-lg" style={{ fontFamily: 'Nunito' }}>

@@ -61,7 +61,7 @@ function HomePage() {
           { type: 'image', url: 'https://lh3.googleusercontent.com/d/1qX0kdUZ7rje8oCIGAMkJLnMUpl9EJ85G' },
           { type: 'image', url: 'https://lh3.googleusercontent.com/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26' },
           { type: 'image', url: 'https://lh3.googleusercontent.com/d/1eEdXKgLxrtxXg8FpcjFILi0X55LmFB5q' },
-          { type: 'video', url: 'https://drive.google.com/file/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26/preview' }
+          { type: 'video', url: 'https://drive.google.com/file/d/1ET6tGnOYm8TG9p8Zs3Eje1BM8gO3E3MY/preview' }
         ]}
       ]},
       { month: 'December', color: '#DC2626', festivals: [
@@ -788,19 +788,25 @@ function HomePage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: index * 0.05 }}
                         onClick={() => setSelectedMonth(monthData)}
-                        className="bg-white rounded-2xl p-6 card-3d cursor-pointer text-center border-4 border-white hover:border-current transition-colors"
+                        className="relative rounded-2xl overflow-hidden card-3d cursor-pointer h-52 border-4 border-white hover:border-current transition-colors group"
                         style={{ boxShadow: `6px 6px 0px ${monthData.color}` }}
                         data-testid={`month-${monthData.month.toLowerCase()}`}
                       >
-                        <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ backgroundColor: monthData.color }}>
-                          <ChevronDown className="w-7 h-7 text-white" />
+                        <img
+                          src={monthData.festivals[0].thumbnail}
+                          alt={monthData.month}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+                          <div className="absolute bottom-4 left-0 right-0 text-center">
+                            <h3 className="text-xl font-bold text-white drop-shadow-lg" style={{ fontFamily: 'Fredoka' }}>
+                              {monthData.month}
+                            </h3>
+                            <p className="text-xs text-white/80 mt-1" style={{ fontFamily: 'Nunito' }}>
+                              {monthData.festivals.map(f => f.name).join(', ')}
+                            </p>
+                          </div>
                         </div>
-                        <h3 className="text-xl font-bold text-[#1E293B]" style={{ fontFamily: 'Fredoka' }}>
-                          {monthData.month}
-                        </h3>
-                        <p className="text-sm text-[#475569] mt-1" style={{ fontFamily: 'Nunito' }}>
-                          {monthData.festivals.length} festival{monthData.festivals.length > 1 ? 's' : ''}
-                        </p>
                       </motion.div>
                     ))}
                   </div>
@@ -809,12 +815,15 @@ function HomePage() {
                 {/* Level 2: Festivals for Selected Month */}
                 {selectedMonth && !selectedFestival && (
                   <div>
-                    <h3 className="text-2xl font-bold text-[#1E293B] mb-6 flex items-center space-x-3" style={{ fontFamily: 'Fredoka' }}>
+                    <h3 className="text-2xl font-bold text-[#1E293B] mb-2 flex items-center space-x-3" style={{ fontFamily: 'Fredoka' }}>
                       <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: selectedMonth.color }}>
                         <FolderOpen className="w-5 h-5 text-white" />
                       </div>
                       <span>{selectedMonth.month} Celebrations</span>
                     </h3>
+                    <p className="text-base text-[#475569] mb-6 ml-[52px]" style={{ fontFamily: 'Nunito' }}>
+                      {selectedMonth.festivals.map(f => f.name).join('  •  ')}
+                    </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {selectedMonth.festivals.map((festival, index) => (
                         <motion.div

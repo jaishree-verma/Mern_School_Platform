@@ -12,6 +12,9 @@ function HomePage() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedFestival, setSelectedFestival] = useState(null);
+  const [viewingPhoto, setViewingPhoto] = useState(null);
+  const [viewingPhotoIndex, setViewingPhotoIndex] = useState(0);
+  const [viewingPhotoList, setViewingPhotoList] = useState([]);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -53,15 +56,19 @@ function HomePage() {
       { month: 'November', color: '#FB7185', festivals: [
         { name: 'Diwali', thumbnail: 'https://images.unsplash.com/photo-1605641490144-554d7f2ae740?w=800', photos: [] },
         { name: "Children's Day", thumbnail: 'https://lh3.googleusercontent.com/d/1KH79bJDsNlXZbdldQw1vYa1JdtUcpVEO', photos: [
-          'https://lh3.googleusercontent.com/d/1KH79bJDsNlXZbdldQw1vYa1JdtUcpVEO',
-          'https://lh3.googleusercontent.com/d/1ERBruyokXy2VG-FsJuVm3J0GdUB0k-NH',
-          'https://lh3.googleusercontent.com/d/1qX0kdUZ7rje8oCIGAMkJLnMUpl9EJ85G',
-          'https://lh3.googleusercontent.com/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26',
-          'https://lh3.googleusercontent.com/d/1eEdXKgLxrtxXg8FpcjFILi0X55LmFB5q'
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1KH79bJDsNlXZbdldQw1vYa1JdtUcpVEO' },
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1ERBruyokXy2VG-FsJuVm3J0GdUB0k-NH' },
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1qX0kdUZ7rje8oCIGAMkJLnMUpl9EJ85G' },
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26' },
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1eEdXKgLxrtxXg8FpcjFILi0X55LmFB5q' }
         ]}
       ]},
       { month: 'December', color: '#DC2626', festivals: [
-        { name: 'Christmas', thumbnail: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800', photos: [] }
+        { name: 'Christmas', thumbnail: 'https://lh3.googleusercontent.com/d/1NbsNS-wu_kQAILD6kwaM-VSeufV3t1Cv', photos: [
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/1NbsNS-wu_kQAILD6kwaM-VSeufV3t1Cv' },
+          { type: 'image', url: 'https://lh3.googleusercontent.com/d/15VpzIJQpKCS55ohsO9no1OArHt83bWoC' },
+          { type: 'video', url: 'https://drive.google.com/file/d/1jO1aUB7ZuIdI5-DhoM8yo7FdLz9cPivr/preview' }
+        ]}
       ]},
     ],
     classroom: [
@@ -854,30 +861,54 @@ function HomePage() {
                         <Star className="w-5 h-5 text-white" />
                       </div>
                       <span>{selectedFestival.name}</span>
-                      <span className="text-base font-normal text-[#475569]">({selectedFestival.photos.length} photos)</span>
+                      <span className="text-base font-normal text-[#475569]">({selectedFestival.photos.length} items)</span>
                     </h3>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                      {selectedFestival.photos.map((photo, index) => (
+                      {selectedFestival.photos.map((item, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.4, delay: index * 0.08 }}
                           className="relative rounded-2xl overflow-hidden group cursor-pointer h-56 card-3d border-4 border-white shadow-lg"
+                          onClick={() => {
+                            if (item.type === 'image') {
+                              const imageItems = selectedFestival.photos.filter(p => p.type === 'image');
+                              const imgIndex = imageItems.indexOf(item);
+                              setViewingPhotoList(imageItems.map(p => p.url));
+                              setViewingPhotoIndex(imgIndex >= 0 ? imgIndex : 0);
+                              setViewingPhoto(item.url);
+                            }
+                          }}
                           data-testid={`festival-photo-${index}`}
                         >
-                          <img
-                            src={photo}
-                            alt={`${selectedFestival.name} Photo ${index + 1}`}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div className="absolute bottom-3 left-3">
-                              <p className="text-white text-sm font-bold" style={{ fontFamily: 'Nunito' }}>
-                                Photo {index + 1}
-                              </p>
-                            </div>
-                          </div>
+                          {item.type === 'video' ? (
+                            <iframe
+                              src={item.url}
+                              width="100%"
+                              height="100%"
+                              allow="autoplay; encrypted-media"
+                              allowFullScreen
+                              title="Festival Video"
+                              className="w-full h-full"
+                              style={{ border: 0 }}
+                            />
+                          ) : (
+                            <>
+                              <img
+                                src={item.url}
+                                alt={`${selectedFestival.name} Photo ${index + 1}`}
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="absolute bottom-3 left-3">
+                                  <p className="text-white text-sm font-bold" style={{ fontFamily: 'Nunito' }}>
+                                    Photo {index + 1}
+                                  </p>
+                                </div>
+                              </div>
+                            </>
+                          )}
                         </motion.div>
                       ))}
                     </div>
@@ -1088,6 +1119,77 @@ function HomePage() {
           </p>
         </div>
       </footer>
+
+      {/* Full Screen Photo Viewer */}
+      <AnimatePresence>
+        {viewingPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+            onClick={() => setViewingPhoto(null)}
+          >
+            <button
+              onClick={() => setViewingPhoto(null)}
+              className="absolute top-4 right-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+              data-testid="close-photo-viewer"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+
+            {viewingPhotoList.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const newIndex = (viewingPhotoIndex - 1 + viewingPhotoList.length) % viewingPhotoList.length;
+                    setViewingPhotoIndex(newIndex);
+                    setViewingPhoto(viewingPhotoList[newIndex]);
+                  }}
+                  className="absolute left-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+                  data-testid="prev-photo"
+                >
+                  <ChevronLeft className="w-8 h-8 text-white" />
+                </button>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const newIndex = (viewingPhotoIndex + 1) % viewingPhotoList.length;
+                    setViewingPhotoIndex(newIndex);
+                    setViewingPhoto(viewingPhotoList[newIndex]);
+                  }}
+                  className="absolute right-4 z-[110] bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+                  data-testid="next-photo"
+                >
+                  <ChevronRightIcon className="w-8 h-8 text-white" />
+                </button>
+              </>
+            )}
+
+            <motion.div
+              key={viewingPhoto}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-5xl max-h-[85vh] w-full mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={viewingPhoto}
+                alt="Full view"
+                className="w-full h-full object-contain rounded-lg"
+              />
+              {viewingPhotoList.length > 1 && (
+                <p className="text-white text-center mt-4 text-lg" style={{ fontFamily: 'Nunito' }}>
+                  {viewingPhotoIndex + 1} / {viewingPhotoList.length}
+                </p>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Image Gallery Modal - Grid of Small Frames */}
       <AnimatePresence>

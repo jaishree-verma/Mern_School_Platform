@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { School, Phone, Mail, MapPin, ChevronRight, BookOpen, Users, Star, Heart, X, ChevronLeft, ChevronRight as ChevronRightIcon } from 'lucide-react';
+import { School, Phone, Mail, MapPin, ChevronRight, BookOpen, Users, Star, Heart, X, ChevronLeft, ChevronRight as ChevronRightIcon, ChevronDown, FolderOpen, ArrowLeft } from 'lucide-react';
 import '@/App.css';
 
 function HomePage() {
@@ -10,6 +10,8 @@ function HomePage() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState(null);
+  const [selectedFestival, setSelectedFestival] = useState(null);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -29,16 +31,38 @@ function HomePage() {
       { url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800', title: 'Annual Prize Distribution Ceremony', description: 'Honoring achievements' },
     ],
     celebrations: [
-      { url: 'https://images.unsplash.com/photo-1611770991819-89677a4a87c3?w=800', title: 'Republic Day', month: 'January', color: '#FF9933' },
-      { url: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800', title: 'Earth Day', month: 'April', color: '#34D399' },
-      { url: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800', title: 'World Environment Day', month: 'June', color: '#10B981' },
-      { url: 'https://images.unsplash.com/photo-1565690502656-2370a1f4d48a?w=800', title: 'Independence Day', month: 'August', color: '#38BDF8' },
-      { url: 'https://images.unsplash.com/photo-1628625294421-ee9e2a44ef1d?w=800', title: 'Janmashtmi', month: 'August', color: '#8B5CF6' },
-      { url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800', title: 'Teachers Day', month: 'September', color: '#F59E0B' },
-      { url: 'https://images.unsplash.com/photo-1583521214690-73421a1829a9?w=800', title: 'Dussehra', month: 'October', color: '#EF4444' },
-      { url: 'https://images.unsplash.com/photo-1605641490144-554d7f2ae740?w=800', title: 'Diwali', month: 'November', color: '#FACC15' },
-      { url: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800', title: 'Children\'s Day', month: 'November', color: '#FB7185' },
-      { url: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800', title: 'Christmas', month: 'December', color: '#DC2626' },
+      { month: 'January', color: '#FF9933', festivals: [
+        { name: 'Republic Day', thumbnail: 'https://images.unsplash.com/photo-1611770991819-89677a4a87c3?w=800', photos: [] }
+      ]},
+      { month: 'April', color: '#34D399', festivals: [
+        { name: 'Earth Day', thumbnail: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800', photos: [] }
+      ]},
+      { month: 'June', color: '#10B981', festivals: [
+        { name: 'World Environment Day', thumbnail: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800', photos: [] }
+      ]},
+      { month: 'August', color: '#38BDF8', festivals: [
+        { name: 'Independence Day', thumbnail: 'https://images.unsplash.com/photo-1565690502656-2370a1f4d48a?w=800', photos: [] },
+        { name: 'Janmashtmi', thumbnail: 'https://images.unsplash.com/photo-1628625294421-ee9e2a44ef1d?w=800', photos: [] }
+      ]},
+      { month: 'September', color: '#F59E0B', festivals: [
+        { name: 'Teachers Day', thumbnail: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800', photos: [] }
+      ]},
+      { month: 'October', color: '#EF4444', festivals: [
+        { name: 'Dussehra', thumbnail: 'https://images.unsplash.com/photo-1583521214690-73421a1829a9?w=800', photos: [] }
+      ]},
+      { month: 'November', color: '#FB7185', festivals: [
+        { name: 'Diwali', thumbnail: 'https://images.unsplash.com/photo-1605641490144-554d7f2ae740?w=800', photos: [] },
+        { name: "Children's Day", thumbnail: 'https://lh3.googleusercontent.com/d/1KH79bJDsNlXZbdldQw1vYa1JdtUcpVEO', photos: [
+          'https://lh3.googleusercontent.com/d/1KH79bJDsNlXZbdldQw1vYa1JdtUcpVEO',
+          'https://lh3.googleusercontent.com/d/1ERBruyokXy2VG-FsJuVm3J0GdUB0k-NH',
+          'https://lh3.googleusercontent.com/d/1qX0kdUZ7rje8oCIGAMkJLnMUpl9EJ85G',
+          'https://lh3.googleusercontent.com/d/1SiK1uVCtMBVesZhaDV7PiLIW7BxJuz26',
+          'https://lh3.googleusercontent.com/d/1eEdXKgLxrtxXg8FpcjFILi0X55LmFB5q'
+        ]}
+      ]},
+      { month: 'December', color: '#DC2626', festivals: [
+        { name: 'Christmas', thumbnail: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800', photos: [] }
+      ]},
     ],
     classroom: [
       { url: 'https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', title: 'Learning', description: 'Building strong foundations' },
@@ -618,7 +642,7 @@ function HomePage() {
               Events
             </button>
             <button
-              onClick={() => setActiveGalleryTab('celebrations')}
+              onClick={() => { setActiveGalleryTab('celebrations'); setSelectedMonth(null); setSelectedFestival(null); }}
               className={`px-6 py-3 rounded-full font-bold transition-all ${
                 activeGalleryTab === 'celebrations'
                   ? 'bg-[#FB7185] text-white shadow-lg scale-105'
@@ -725,40 +749,140 @@ function HomePage() {
               </div>
             )}
 
-            {/* Celebrations Layout - Grid with Month Badges */}
+            {/* Celebrations Layout - Month Dropdown → Festival Folders → Photos */}
             {activeGalleryTab === 'celebrations' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {galleryCategories.celebrations.map((image, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative rounded-2xl overflow-hidden group cursor-pointer h-72 border-4 border-white shadow-xl card-3d"
-                    data-testid={`gallery-image-celebrations-${index}`}
+              <div>
+                {/* Back Button */}
+                {(selectedMonth || selectedFestival) && (
+                  <motion.button
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    onClick={() => {
+                      if (selectedFestival) setSelectedFestival(null);
+                      else setSelectedMonth(null);
+                    }}
+                    className="mb-6 px-5 py-2 bg-white rounded-full font-bold text-[#475569] border-2 border-[#E2E8F0] hover:border-[#38BDF8] transition-colors flex items-center space-x-2"
+                    style={{ fontFamily: 'Nunito' }}
+                    data-testid="celebrations-back-btn"
                   >
-                    <img
-                      src={image.url}
-                      alt={image.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <div 
-                        className="px-4 py-2 rounded-full font-bold text-white shadow-lg"
-                        style={{ backgroundColor: image.color, fontFamily: 'Nunito' }}
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Back</span>
+                  </motion.button>
+                )}
+
+                {/* Level 1: Months Grid */}
+                {!selectedMonth && !selectedFestival && (
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+                    {galleryCategories.celebrations.map((monthData, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        onClick={() => setSelectedMonth(monthData)}
+                        className="bg-white rounded-2xl p-6 card-3d cursor-pointer text-center border-4 border-white hover:border-current transition-colors"
+                        style={{ boxShadow: `6px 6px 0px ${monthData.color}` }}
+                        data-testid={`month-${monthData.month.toLowerCase()}`}
                       >
-                        {image.month}
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-white text-xl font-bold" style={{ fontFamily: 'Fredoka' }}>
-                          {image.title}
+                        <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ backgroundColor: monthData.color }}>
+                          <ChevronDown className="w-7 h-7 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-[#1E293B]" style={{ fontFamily: 'Fredoka' }}>
+                          {monthData.month}
                         </h3>
+                        <p className="text-sm text-[#475569] mt-1" style={{ fontFamily: 'Nunito' }}>
+                          {monthData.festivals.length} festival{monthData.festivals.length > 1 ? 's' : ''}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Level 2: Festivals for Selected Month */}
+                {selectedMonth && !selectedFestival && (
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1E293B] mb-6 flex items-center space-x-3" style={{ fontFamily: 'Fredoka' }}>
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: selectedMonth.color }}>
+                        <FolderOpen className="w-5 h-5 text-white" />
                       </div>
+                      <span>{selectedMonth.month} Celebrations</span>
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {selectedMonth.festivals.map((festival, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          onClick={() => festival.photos.length > 0 ? setSelectedFestival(festival) : null}
+                          className={`relative rounded-2xl overflow-hidden group ${festival.photos.length > 0 ? 'cursor-pointer' : 'cursor-default'} h-64 card-3d border-4 border-white`}
+                          style={{ boxShadow: `6px 6px 0px ${selectedMonth.color}` }}
+                          data-testid={`festival-${festival.name.toLowerCase().replace(/['\s]/g, '-')}`}
+                        >
+                          <img
+                            src={festival.thumbnail}
+                            alt={festival.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+                            <div className="absolute bottom-4 left-4 right-4">
+                              <h4 className="text-white text-xl font-bold" style={{ fontFamily: 'Fredoka' }}>
+                                {festival.name}
+                              </h4>
+                              {festival.photos.length > 0 ? (
+                                <p className="text-white/70 text-sm mt-1" style={{ fontFamily: 'Nunito' }}>
+                                  {festival.photos.length} photos - Click to view →
+                                </p>
+                              ) : (
+                                <p className="text-white/50 text-sm mt-1" style={{ fontFamily: 'Nunito' }}>
+                                  Photos coming soon
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                )}
+
+                {/* Level 3: Photos for Selected Festival */}
+                {selectedFestival && (
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1E293B] mb-6 flex items-center space-x-3" style={{ fontFamily: 'Fredoka' }}>
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: selectedMonth.color }}>
+                        <Star className="w-5 h-5 text-white" />
+                      </div>
+                      <span>{selectedFestival.name}</span>
+                      <span className="text-base font-normal text-[#475569]">({selectedFestival.photos.length} photos)</span>
+                    </h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      {selectedFestival.photos.map((photo, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.08 }}
+                          className="relative rounded-2xl overflow-hidden group cursor-pointer h-56 card-3d border-4 border-white shadow-lg"
+                          data-testid={`festival-photo-${index}`}
+                        >
+                          <img
+                            src={photo}
+                            alt={`${selectedFestival.name} Photo ${index + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="absolute bottom-3 left-3">
+                              <p className="text-white text-sm font-bold" style={{ fontFamily: 'Nunito' }}>
+                                Photo {index + 1}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 

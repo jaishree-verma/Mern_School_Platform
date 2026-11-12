@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -6,7 +6,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -37,6 +37,30 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+
+# ─── Enrollment Inquiry Models ───────────────────────────────────────────────
+
+class EnrollmentInquiry(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    parent_name: str
+    child_name: str
+    phone: str
+    class_interested: str
+    message: Optional[str] = ""
+    status: str = "pending"
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+class EnrollmentInquiryCreate(BaseModel):
+    parent_name: str
+    child_name: str
+    phone: str
+    class_interested: str
+    message: Optional[str] = ""
+
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -65,6 +89,43 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+
+# ─── Enrollment Endpoints ─────────────────────────────────────────────────────
+
+@api_router.post("/enrollment", response_model=EnrollmentInquiry)
+async def create_enrollment(input: EnrollmentInquiryCreate):
+    inquiry_obj = EnrollmentInquiry(**input.model_dump())
+    doc = inquiry_obj.model_dump()
+    doc['timestamp'] = doc['timestamp'].isoformat()
+    await db.enrollments.insert_one(doc)
+    logger.info(f"New enrollment inquiry: {inquiry_obj.child_name} → {inquiry_obj.class_interested}")
+    return inquiry_obj
+
+
+@api_router.get("/enrollment", response_model=List[EnrollmentInquiry])
+async def get_enrollments():
+    inquiries = await db.enrollments.find({}, {"_id": 0}).to_list(1000)
+    for item in inquiries:
+        if isinstance(item.get('timestamp'), str):
+            item['timestamp'] = datetime.fromisoformat(item['timestamp'])
+    return inquiries
+
+
+@api_router.get("/stats")
+async def get_stats():
+    total_enrollments = await db.enrollments.count_documents({})
+    pending = await db.enrollments.count_documents({"status": "pending"})
+    confirmed = await db.enrollments.count_documents({"status": "confirmed"})
+    return {
+        "total_inquiries": total_enrollments,
+        "pending": pending,
+        "confirmed": confirmed,
+        "classes_offered": 8,
+        "founded_year": 2000,
+        "school_name": "Springers School"
+    }
+
 
 # Include the router in the main app
 app.include_router(api_router)

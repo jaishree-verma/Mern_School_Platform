@@ -121,8 +121,9 @@ html {
 
 /* Admission Banner Scrolling Animation */
 .admission-scroll {
-  display: inline-block;
-  animation: scroll-left 30s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
 }
 
 @keyframes scroll-left {
